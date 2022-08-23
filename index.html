@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST Countries API</title>
+    <!-- Ionicons lib -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Where in the world ?</h1>
+            <button class="theme">
+                <div class="darkmode">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    Dark Mode
+                </div>
+                <div class="light-mode">
+                    <ion-icon name="sunny-outline"></ion-icon>
+                    light Mode
+                </div>
+            </button>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="filter">
+                <div class="search">
+                    <ion-icon class="icon-search" name="search-outline"></ion-icon>
+                    <input type="text" placeholder="Search for a country">
+                </div>
+                <div class="filter-container">
+                    <div class="filter-select">
+                        <button class="filter-btn">
+                            <span>Filter by Region</span>
+                            <ion-icon name="chevron-down-outline"></ion-icon>
+                        </button>
+                        <ul class="options">
+                            <li>
+                                Africa
+                            </li>
+                            <li>
+                                Americas
+                            </li>
+                            <li>
+                                Asia
+                            </li>
+                            <li>
+                                Europe
+                            </li>
+                            <li>
+                                Oceania
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="world">
+            </div>
+            <div class="modal-country" id="modalCountry">
+                <div class="overlay"></div>
+                <div class="content">
+                    <button class="close-modal">
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                        back
+                    </button>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="container">
+        
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

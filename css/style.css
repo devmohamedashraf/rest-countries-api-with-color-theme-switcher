@@ -1,0 +1,384 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --Dark-Mode-Elements: hsl(209, 23%, 22%);
+  --Dark-Mode-Background: hsl(207, 26%, 17%);
+  --Light-Mode-Text: hsl(200, 15%, 8%);
+  --Light-Mode-Input: hsl(0, 0%, 52%);
+  --Light-Mode-Background: hsl(0, 0%, 98%);
+  --Dark-Mode-Text-Light-Mode-Elements: hsl(0, 0%, 100%);
+
+
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: 'Poppins', sans-serif;
+  --normal-font-size: 14px;
+  --font-detail-page: 16px;
+
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*=============== BASE ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--Light-Mode-Background);
+    color: var(--Light-Mode-Text);
+    transition: .3s; /* For animation dark mode */
+    font-weight: 300;
+  }
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  input,
+  button {
+    font-family: var(--body-font);
+    outline: none;
+    border: none;
+  }
+
+  /*=============== THEME ===============*/
+.container{
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+/*=============== HEADER & NAV ===============*/
+header{
+    background-color: var(--Dark-Mode-Text-Light-Mode-Elements);
+    padding: 20px 20px;
+}
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header h1 {
+    font-size: 18px;
+}
+header .theme{
+  cursor: pointer;
+}
+header .theme div{
+    font-size: 14px;
+    background-color: var(--Dark-Mode-Text-Light-Mode-Elements);
+    font-weight: 600;
+    color: var(--Light-Mode-Text);
+}
+header .theme .light-mode{
+    display: none;
+}
+
+/*=============== Content ===============*/
+
+main .filter {
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+main .filter > div{
+  width: 100%;
+  margin: 5px 0;
+}
+main .filter .filter-container {
+    display: flex; 
+    justify-content: start;
+    position: relative;
+}
+main .filter .search {
+    position: relative;
+}
+main .filter .search .icon-search{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}
+main .filter .search input{
+    background-color: var(--Dark-Mode-Text-Light-Mode-Elements);
+    border-radius: 6px;
+    width: 70%;
+    border: 1px solid #eee;
+    padding: 15px;
+    padding-left: 2rem;
+}
+main .filter .filter-container .filter-btn {
+    background-color: var(--Dark-Mode-Text-Light-Mode-Elements);
+    padding: 15px;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    color: var(--Light-Mode-Text);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+main .filter .filter-container .filter-select {
+  position: relative;
+}
+main .filter .filter-container ul{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  background-color: var(--Dark-Mode-Text-Light-Mode-Elements);
+  border: 1px solid #eee;
+  color: var(--Light-Mode-Text);
+  border-radius: 6px;
+  z-index: var(--z-fixed);
+  transition: .3s;
+  opacity: 0;
+}
+
+main .filter .filter-container ul li{
+  padding: 5px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+main .filter .filter-container ul li:hover{
+  background-color: #eee;
+}
+
+main .filter .filter-container .filter-select.active ul{
+  opacity: 1;
+}
+
+main .world {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+main .world .country {
+  width: 100%;
+  border: 1px solid #eee;
+  margin-bottom: 2rem;
+}
+main .world .country {
+  background-color: var(--Dark-Mode-Text-Light-Mode-Elements);
+  color: var(--Light-Mode-Text);
+  border-radius: 8px;
+}
+
+main .world .country figure img {
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+}
+main .world .country .info {
+  padding: 20px;
+}
+main .world .info h2 {
+  padding-bottom: 16px;
+  cursor: pointer;
+}
+main .world .info span{
+  display: block;
+  font-size: 14px;
+}
+/* Modal Country */
+.modal-country{
+  opacity: 0;
+  visibility: hidden;
+  padding: 0 15px;
+  transition: .3s linear;
+}
+.modal-country.active{
+  opacity: 1;
+  visibility: visible;
+}
+.modal-country .overlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transition: all .1s ease;
+  background: transparent;
+}
+.modal-country.active .overlay {
+  background: rgba(0,0,0,.2);
+  --webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+.modal-country .content {
+  position: fixed;
+  background-color: var(--Light-Mode-Background);
+  width: 100%;
+  max-width: 992px;
+  height: auto;
+  padding: 20px;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+}
+.modal-country .content button{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  background-color: var(--Light-Mode-Background);
+  color: var(--Light-Mode-Text);
+  font-size: 16px;
+}
+.modal-country .info {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 20px 0 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.modal-country .info > div {
+  width: 100%;
+}
+.modal-country .info .infoPhoto{
+  text-align: center;
+}
+.modal-country .info .infoPhoto img {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.modal-country .info .infoCountry h2 {
+  margin-bottom: 6px;
+}
+.modal-country .info .infoCountry ul li{
+  padding: 4px 16px 4px 0;
+}
+.modal-country .borderCountries{
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.modal-country .borderCountries span {
+  padding: 4px 16px;
+  margin: 0 4px;
+  border: 1px solid #e2e2e2;
+}
+/*========== Dark theme ==========*/
+.dark {
+  background-color: var(--Dark-Mode-Background);
+  color: var(--Dark-Mode-Text-Light-Mode-Elements);
+}
+.dark header{
+  background-color: var(--Dark-Mode-Elements);
+}
+.dark header .theme div{
+  background-color: var(--Dark-Mode-Elements);
+  color: var(--Dark-Mode-Text-Light-Mode-Elements);
+
+}
+.dark main .filter .search input{
+  background-color: var(--Dark-Mode-Elements);
+  border: none;
+
+}
+.dark main .filter .filter-container .filter-btn {
+  background-color: var(--Dark-Mode-Elements);
+  color: var(--Dark-Mode-Text-Light-Mode-Elements);
+  border: none;
+}
+.dark main .filter .filter-container ul{
+  background-color: var(--Dark-Mode-Elements);
+  border: none;
+  color: var(--Dark-Mode-Text-Light-Mode-Elements);
+}
+.dark main .filter .filter-container ul li:hover{
+  background-color: var(--Dark-Mode-Background);
+}
+.dark main .world .country {
+  background-color: var(--Dark-Mode-Elements);
+  border: none;
+  color: var(--Dark-Mode-Text-Light-Mode-Elements);
+}
+
+.dark .modal-country .content {
+  background-color: var(--Dark-Mode-Background);
+}
+.dark .modal-country .content button{
+  background-color: var(--Dark-Mode-Background);
+  color: var(--Dark-Mode-Text-Light-Mode-Elements)
+}
+/*=============== BREAKPOINTS ===============*/
+@media (min-width: 576px) { 
+  main .filter > div {
+      width: 50%;
+      margin: 0;
+  }
+  main .filter .filter-container {
+    justify-content: end;
+  }
+  main .world .country {
+    margin: 0 2rem 2rem 0;
+    width: calc(50% - 2rem);
+  }
+}
+
+@media (min-width: 768px) { 
+  main .world .country {
+    width: calc(33.33% - 2rem);
+  }
+  .modal-country .info .infoCountry ul li{
+    display: inline-block;
+  }
+}
+
+@media (min-width: 992px) { 
+  .modal-country .info > div {
+    width: calc(40% - 15px);
+  }
+  .modal-country .info{
+    justify-content: unset;
+  }
+  .modal-country .info .infoPhoto img {
+    margin-bottom: 0;
+  }
+  .modal-country .info .infoCountry {
+    margin-left: 15px;
+  }
+  main .world .country {
+    width: calc(25% - 2rem);
+  }
+}
