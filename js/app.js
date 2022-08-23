@@ -98,7 +98,6 @@ function filterByRegion(countries){
             filterBtn.firstElementChild.innerHTML = `Filter by ${e.target.innerText}`
             // Close Menu Region
             openMenu()
-            console.log(countries);
             // ccffr > Countries coming from the FilterRegion
             let ccffr = [];
             ccffr = countries.filter((country) => {
@@ -188,7 +187,6 @@ function addModalInfoCountry(countries) {
 
 
         ul.insertAdjacentHTML('beforeend', li)
-        console.log(country);
         infoCountry.appendChild(h2) // Adding h2 to info country
         infoCountry.appendChild(ul)
         if(country.borders !== undefined){
@@ -201,12 +199,12 @@ function addModalInfoCountry(countries) {
 
             let bcountries = document.createElement('div')
             bcountries.className = 'countries'
-            let borders;
-
-            country.borders.forEach(element => {
-               borders += `<span>${element}</span>`
+            let borders = [];
+            country.borders.filter(element => {
+                    return element !== 'undefined' ? borders.push(`<span>${element}</span>`): ''
             });
-            bcountries.insertAdjacentHTML('beforeend' ,borders)
+            bcountries.insertAdjacentHTML('beforeend', borders)
+
             borderCountries.appendChild(bcountries)
             infoCountry.appendChild(borderCountries)
         }
